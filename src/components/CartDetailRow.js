@@ -5,7 +5,7 @@ class CartDetailRow extends Component{
 
     constructor(props){
         super(props);
-        this.handleIncreaseAmount = this.handleIncreaseAmount.bind(this);
+        //this.handleIncreaseAmount = this.handleIncreaseAmount.bind(this);
         this.handleDecreaseAmount = this.handleDecreaseAmount.bind(this);
     } 
 
@@ -28,7 +28,7 @@ class CartDetailRow extends Component{
       <div> 
         produit: {this.props.productName} {/*DO NOT FORGET this.props AND NOT just props*/}
         quantité:  {this.props.amount}
-        <button onClick={this.handleIncreaseAmount('charme')}>+</button>
+        <button onClick={this.handleIncreaseAmount.bind(this,'charme')}>+</button>
         <button onClick={this.handleDecreaseAmount}>-</button>
         prix unitaire: {this.props.unitPrice}
         subtotal: {this.props.unitPrice * this.props.amount }

@@ -19,7 +19,7 @@ class Cart extends Component{
     handleIncreaseAmount(itemName){
       console.log('Cart a capté increaseAmount from CartDetailRow');
       // ATTENTION decommenter cree boucle sans fin
-      //this.setState({   order:[...this.state.order,{productName:itemName, amount:1, unitPrice:15}]    }  );  
+      this.setState({   order:[...this.state.order,{productName:itemName, amount:1, unitPrice:15}]    }  );  
        
     }
 
