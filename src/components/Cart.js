@@ -25,9 +25,11 @@ class Cart extends Component{
       
       const newOrderDetaiRows = this.state.orderDetailRows.map((x)=>x);
       const index = newOrderDetaiRows.findIndex(e=>e.id==itemId);
-      const newAmount =newOrderDetaiRows[index].amount + 1;
+      console.log(index);
+      const newAmount = newOrderDetaiRows[index].amount + 1;
+      console.log(newAmount);
       newOrderDetaiRows[index].amount = newAmount;
-      this.state.orderDetailRows= newOrderDetaiRows;
+      this.setState({orderDetailRows : newOrderDetaiRows});
        
     }
 
