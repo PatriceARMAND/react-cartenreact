@@ -10,9 +10,9 @@ class CartDetailRow extends Component{
     } 
 
 
-    handleIncreaseAmount(itemName){
-       console.log({itemName});
-       this.props.onIncreaseAmount(itemName); //ATTENTION DO NOT FORGET constructor binding AND "();"
+    handleIncreaseAmount(id){
+       //console.log({itemName});
+       this.props.onIncreaseAmount(id); //ATTENTION DO NOT FORGET constructor binding AND "();"
     }
 
 
@@ -26,9 +26,9 @@ class CartDetailRow extends Component{
     
       return(
       <div> 
-        produit: {this.props.productName} {/*DO NOT FORGET this.props AND NOT just props*/}
+        produit: {this.props.itemLabel} {/*DO NOT FORGET this.props AND NOT just props*/}
         quantité:  {this.props.amount}
-        <button onClick={this.handleIncreaseAmount.bind(this,'charme')}>+</button>
+        <button onClick={this.handleIncreaseAmount.bind(this,this.props.id)}>+</button>
         <button onClick={this.handleDecreaseAmount}>-</button>
         prix unitaire: {this.props.unitPrice}
         subtotal: {this.props.unitPrice * this.props.amount }

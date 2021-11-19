@@ -9,17 +9,18 @@ class Cart extends Component{
     super(props);
     this.state = {      
           
-      order:[{productName:'buis', amount:1, unitPrice:15},{productName:'if', amount:10, unitPrice:20}]
+      orderDetailRows:[{id:1, itemLabel:'buis', amount:1, unitPrice:15},{id:2, itemLabel:'if', amount:10, unitPrice:20}]
         
       
     }; 
     this.handleIncreaseAmount= this.handleIncreaseAmount.bind(this);    
   }
 
-    handleIncreaseAmount(itemName){
+    handleIncreaseAmount(itemId){
+      console.log(itemId)
       console.log('Cart a capté increaseAmount from CartDetailRow');
       // ATTENTION decommenter cree boucle sans fin
-      this.setState({   order:[...this.state.order,{productName:itemName, amount:1, unitPrice:15}]    }  );  
+      //this.setState({   order:[...this.state.order,{productName:itemName, amount:1, unitPrice:15}]    }  );  
        
     }
 
@@ -32,10 +33,10 @@ class Cart extends Component{
     render(){
       
       const rows = [];
-      this.state.order.forEach(
+      this.state.orderDetailRows.forEach(
         (item)=>{
           //alert(item.productName);
-          rows.push(<CartDetailRow productName={item.productName}  amount={item.amount} unitPrice={item.unitPrice} onIncreaseAmount={this.handleIncreaseAmount} onDecreaseAmount={this.handleDecreaseAmount}></CartDetailRow>);
+          rows.push(<CartDetailRow id={item.id} itemLabel={item.itemLabel}  amount={item.amount} unitPrice={item.unitPrice} onIncreaseAmount={this.handleIncreaseAmount} onDecreaseAmount={this.handleDecreaseAmount}></CartDetailRow>);
         }
       );
         
