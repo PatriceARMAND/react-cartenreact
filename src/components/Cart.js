@@ -17,10 +17,17 @@ class Cart extends Component{
   }
 
     handleIncreaseAmount(itemId){
-      console.log(itemId)
+      console.log(itemId);
       console.log('Cart a capté increaseAmount from CartDetailRow');
       // ATTENTION decommenter cree boucle sans fin
       //this.setState({   order:[...this.state.order,{productName:itemName, amount:1, unitPrice:15}]    }  );  
+      // reference artcile about cloning arrey: https://www.freecodecamp.org/news/how-to-clone-an-array-in-javascript-1d3183468f6a/
+      
+      const newOrderDetaiRows = this.state.orderDetailRows.map((x)=>x);
+      const index = newOrderDetaiRows.findIndex(e=>e.id==itemId);
+      const newAmount =newOrderDetaiRows[index].amount + 1;
+      newOrderDetaiRows[index].amount = newAmount;
+      this.state.orderDetailRows= newOrderDetaiRows;
        
     }
 
