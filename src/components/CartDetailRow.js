@@ -21,6 +21,9 @@ class CartDetailRow extends Component{
       this.props.onDecreaseAmount();
     }
 
+    handleDelete(id){
+      this.props.onDelete(id);
+    }
 
     render(){
     
@@ -32,6 +35,7 @@ class CartDetailRow extends Component{
         <button onClick={this.handleDecreaseAmount}>-</button>
         prix unitaire: {this.props.unitPrice}
         subtotal: {this.props.unitPrice * this.props.amount }
+        <button onClick={this.handleDelete.bind(this,this.props.id)}>x</button>
       </div>
       );
     }

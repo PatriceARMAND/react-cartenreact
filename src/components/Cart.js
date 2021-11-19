@@ -13,12 +13,15 @@ class Cart extends Component{
         
       
     }; 
-    this.handleIncreaseAmount= this.handleIncreaseAmount.bind(this);    
+    // ABSOLUTELY NECESSARY OTHERWISE any reference to this.state.orderDetailRows will be undifined 
+    this.handleIncreaseAmount= this.handleIncreaseAmount.bind(this);   
+    this.handleDelete = this.handleDelete.bind(this); 
   }
 
+  
     handleIncreaseAmount(itemId){      
 
-      // reference artcile about cloning Array: https://www.freecodecamp.org/news/how-to-clone-an-array-in-javascript-1d3183468f6a/          
+      // reference artcile about cloning Array: https://www.freecodecamp.org/news/how-to-clone-an-array-in-javascript-1d3183468f6a/ NB Other way exists
       const newOrderDetaiRows = this.state.orderDetailRows.map((x)=>x);
       const index = newOrderDetaiRows.findIndex(e=>e.id==itemId);      
       const newAmount = newOrderDetaiRows[index].amount + 1;      
@@ -32,13 +35,21 @@ class Cart extends Component{
       
     }
 
+    handleDelete(id){
+      console.log(`delete ${id}`);
+      //console.log(this.state.orderDetailRows);
+      const newOrderDetaiRow = this.state.orderDetailRows.filter(x=>x.id!==id);
+      //console.log(newOrderDetaiRows);
+      this.setState({orderDetailRows:newOrderDetaiRow});
+
+    }
+
 
     render(){      
       const rows = [];
       this.state.orderDetailRows.forEach(
-        (item)=>{
-          //alert(item.productName);
-          rows.push(<CartDetailRow id={item.id} itemLabel={item.itemLabel}  amount={item.amount} unitPrice={item.unitPrice} onIncreaseAmount={this.handleIncreaseAmount} onDecreaseAmount={this.handleDecreaseAmount}></CartDetailRow>);
+        (item)=>{          
+          rows.push(<CartDetailRow id={item.id} itemLabel={item.itemLabel}  amount={item.amount} unitPrice={item.unitPrice} onIncreaseAmount={this.handleIncreaseAmount} onDecreaseAmount={this.handleDecreaseAmount}onDelete={this.handleDelete}></CartDetailRow>);
         }
       );
         
