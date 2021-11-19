@@ -16,22 +16,16 @@ class Cart extends Component{
     this.handleIncreaseAmount= this.handleIncreaseAmount.bind(this);    
   }
 
-    handleIncreaseAmount(itemId){
-      console.log(itemId);
-      console.log('Cart a capté increaseAmount from CartDetailRow');
-      // ATTENTION decommenter cree boucle sans fin
-      //this.setState({   order:[...this.state.order,{productName:itemName, amount:1, unitPrice:15}]    }  );  
-      // reference artcile about cloning arrey: https://www.freecodecamp.org/news/how-to-clone-an-array-in-javascript-1d3183468f6a/
-      
+    handleIncreaseAmount(itemId){      
+
+      // reference artcile about cloning Array: https://www.freecodecamp.org/news/how-to-clone-an-array-in-javascript-1d3183468f6a/          
       const newOrderDetaiRows = this.state.orderDetailRows.map((x)=>x);
-      const index = newOrderDetaiRows.findIndex(e=>e.id==itemId);
-      console.log(index);
-      const newAmount = newOrderDetaiRows[index].amount + 1;
-      console.log(newAmount);
+      const index = newOrderDetaiRows.findIndex(e=>e.id==itemId);      
+      const newAmount = newOrderDetaiRows[index].amount + 1;      
       newOrderDetaiRows[index].amount = newAmount;
-      this.setState({orderDetailRows : newOrderDetaiRows});
-       
+      this.setState({orderDetailRows : newOrderDetaiRows});       
     }
+
 
     handleDecreaseAmount=()=>{
       console.log('Cart a capté DecreaseAmount from CartDetailRow');
@@ -39,8 +33,7 @@ class Cart extends Component{
     }
 
 
-    render(){
-      
+    render(){      
       const rows = [];
       this.state.orderDetailRows.forEach(
         (item)=>{
