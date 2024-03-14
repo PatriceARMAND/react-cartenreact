@@ -19,7 +19,7 @@ export default function App() {
          
       <CartIcon/>
       <input type="text" id="inputArticle"></input>
-      <button id="BtnAddArticle" onClick={handleBtnAddArticleClick} style={{width:50 ,height:20}}>Add</button> {/* do not forget comma between attribute in style definition */}
+      <button id="BtnAddArticle" onClick={handleBtnAddArticleClick} style={{width:50 ,height:20}}>Add</button> {/* do not forget ! comma between attribute in style definition */}
       {/* et pas {this.handleBtnAddArticleClick} only valid for class component */}
       <Cart/>
       
